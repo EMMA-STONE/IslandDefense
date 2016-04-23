@@ -1,0 +1,29 @@
+"spawn_worker"
+{
+    "BaseClass" "ability_datadriven"
+
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+    "AbilityManaCost" "0"
+
+    "AbilityCastRange" "0"
+    "AbilityCastPoint" "0"
+    "AbilityChannelTime" "0.5"
+
+    "OnChannelSucceeded"
+    {
+        "SpawnUnit"
+        {
+            "UnitName" "basic_worker"
+            "UnitCount" "1"
+            "SpawnRadius" "350"
+            "Target" "CASTER"
+
+            "RunScript"
+            {
+                "ScriptFile"        "gather.lua"
+                "Function"          "Gather"
+            }
+        }
+
+    }	
+}

@@ -1,0 +1,53 @@
+"default_wall"
+  {
+        // Visual
+        //-----------------------------
+        "Model"                     "models/heroes/axe/axe.vmdl"
+        "ModelScale"                "1"
+        "ModelRotation"             "90"
+        
+
+
+
+        "AbilityLayout"     "1"
+        "Ability1"          "sell"
+        "Ability2"          "0"
+        "Ability3"          "0"
+        "Ability4"          "0"
+
+
+
+        // Stats
+        //----------------------------- 
+        "Level"                     "1"
+        "BuildTime"                 "2"
+
+
+        // General
+        //-----------------------------
+        "BaseClass"                 "npc_dota_creature"
+        "ArmorPhysical"             "5"
+        "StatusHealth"              "500"
+        "StatusHealthRegen"         "0"
+        "StatusMana"                "0"
+        "StatusManaRegen"           "0"
+        "MagicalResistance"         "0"
+
+
+        "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+        "TeamName"                  "DOTA_TEAM_NEUTRALS"
+        "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+        "VisionDaytimeRange"        "1800"
+        "VisionNighttimeRange"      "900"  
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "ProjectileCollisionSize"   "50"
+        "RingRadius"                "80"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"             "0"
+
+
+        "ConstructionSize"          "2"
+        "BlockPathingSize"          "2"
+
+  } 
