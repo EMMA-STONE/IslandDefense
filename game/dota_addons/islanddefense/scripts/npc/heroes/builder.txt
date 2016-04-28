@@ -13,9 +13,12 @@
     "ArmorPhysical"       "0"                 // Physical protection.
     "MagicalResistance"       "0"                 // Magical protection (percentage).
 
-    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"     "1"                   // Damage range min.
     "AttackDamageMax"     "1"                   // Damage range max.
+
+
+    
 
     //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
     "AttributeBaseStrength"   "0"                   // Base strength

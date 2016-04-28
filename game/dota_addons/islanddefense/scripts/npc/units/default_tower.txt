@@ -49,7 +49,7 @@
         "TeamName"                  "DOTA_TEAM_GOODGUYS"
         "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
         "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-        "VisionDaytimeRange"        "1800"
+        "VisionDaytimeRange"        "900"
         "VisionNighttimeRange"      "900" 
         "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK" 
         "CombatClassAttack"         "DOTA_COMBAT_CLASS_ATTACK_SIEGE"
@@ -61,5 +61,14 @@
 
         "ConstructionSize"          "2"
         "BlockPathingSize"          "2"
+
+        "Grid"
+        {
+            "Buildable"
+            {
+                "Square"        "4"
+                "RemoveOnDeath" "true"
+            }
+        }
 
   } 

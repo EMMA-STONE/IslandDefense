@@ -49,5 +49,14 @@
 
         "ConstructionSize"          "2"
         "BlockPathingSize"          "2"
+        
+        "Grid"
+        {
+            "Buildable"
+            {
+                "Square"        "4"
+                "RemoveOnDeath" "true"
+            }
+        }
 
   } 

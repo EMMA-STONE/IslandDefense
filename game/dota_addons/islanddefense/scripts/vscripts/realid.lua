@@ -145,7 +145,11 @@ end
 function realId:OnGameInProgress()
   DebugPrint("[REALID] The game has officially begun")
 
-  CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
+  -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
+
+
+  -- Create Gold Crystal in center of map
+  CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
 
   Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
     function()

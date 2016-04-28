@@ -166,6 +166,60 @@
 	        }
 	    }
 	}
+	"gather_wood"
+	{
+		"BaseClass" 					"ability_datadriven"
+	
+	
+		"AbilityTextureName"			"furion_sprout"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
+	
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+	    "AbilityChannelTime" 			"0.5"
+	
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"gather.lua"
+	            "Function"          	"Gather"
+	        }
+	    }
+	}
+	"give_gold"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+		"Modifiers"
+		{
+			"modifier_name"
+			{
+				"Passive"			"1"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+			
+		    	"OnAttacked"
+		    	// "%attack_damage" is set to the damage value after mitigation
+		    	{
+		    		"RunScript"
+		    		{
+		    			"Target"		"ATTACKER"
+		    			"ScriptFile"	"resources.lua"
+		    			"Function"		"GiveGold"
+		    		}
+		    	}
+	
+				
+			}
+		}
+	}
 	"sell"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -200,7 +254,14 @@
 	            "UnitCount" "1"
 	            "SpawnRadius" "350"
 	            "Target" "CASTER"
+	
+	            "RunScript"
+	            {
+	                "ScriptFile"        "gather.lua"
+	                "Function"          "Gather"
+	            }
 	        }
+	
 	    }	
 	}
 	"suicide"

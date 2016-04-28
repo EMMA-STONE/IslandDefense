@@ -13,7 +13,7 @@
 	
 	        "AbilityLayout"     "1"
 	        "Ability1"          "spawn_worker"
-	        "Ability2"          "0"
+	        "Ability2"          "sell"
 	        "Ability3"          "0"
 	        "Ability4"          "0"
 	
@@ -40,7 +40,7 @@
 	        "TeamName"                  "DOTA_TEAM_NEUTRALS"
 	        "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 	        "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-	        "VisionDaytimeRange"        "1800"
+	        "VisionDaytimeRange"        "900"
 	        "VisionNighttimeRange"      "900"  
 	        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
 	        "ProjectileCollisionSize"   "50"
@@ -52,6 +52,14 @@
 	        "ConstructionSize"          "2"
 	        "BlockPathingSize"          "2"
 	
+	        "Grid"
+	        {
+	            "Buildable"
+	            {
+	                "Square"        "4"
+	                "RemoveOnDeath" "true"
+	            }
+	        }
 	}
 	"basic_worker"
 	{
@@ -72,9 +80,9 @@
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK" 
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"    
 	
-	    "AbilityLayout"				"1"
+	    "AbilityLayout"				"2"
 	    "Ability1"					"suicide"
-	    "Ability2"					"0"
+	    "Ability2"					"gather_wood"
 	    "Ability3"					"0"
 	    "Ability4"					"0"
 	
@@ -146,7 +154,7 @@
 	        "TeamName"                  "DOTA_TEAM_GOODGUYS"
 	        "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 	        "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-	        "VisionDaytimeRange"        "1800"
+	        "VisionDaytimeRange"        "900"
 	        "VisionNighttimeRange"      "900" 
 	        "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK" 
 	        "CombatClassAttack"         "DOTA_COMBAT_CLASS_ATTACK_SIEGE"
@@ -158,6 +166,15 @@
 	
 	        "ConstructionSize"          "2"
 	        "BlockPathingSize"          "2"
+	
+	        "Grid"
+	        {
+	            "Buildable"
+	            {
+	                "Square"        "4"
+	                "RemoveOnDeath" "true"
+	            }
+	        }
 	
 	  } 
 	"default_wall"
@@ -211,8 +228,65 @@
 	
 	        "ConstructionSize"          "2"
 	        "BlockPathingSize"          "2"
+	        
+	        "Grid"
+	        {
+	            "Buildable"
+	            {
+	                "Square"        "4"
+	                "RemoveOnDeath" "true"
+	            }
+	        }
 	
 	  } 
+	"gold_crystal"
+	{
+	
+	
+	
+	
+		"BaseClass"                 "npc_dota_creature"
+	
+		"precache"
+		{
+			"model"  "models/crystal.vmdl"
+	
+		}
+	
+		"Ability1"					"give_gold"
+	
+		"Model"                     "models/crystal.vmdl"
+		"ModelScale"                "3"
+		"ModelRotation"             "90"
+	
+		"BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+		"RingRadius"                "80"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	
+	    "TeamName"                  "DOTA_TEAM_BADGUYS"
+	
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	
+	
+	    "VisionDaytimeRange"        "900"
+	    "VisionNighttimeRange"      "900"  
+	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	
+	    "StatusHealth"              "500"
+	    "ArmorPhysical"             "100"
+	    "StatusHealthRegen"         "100"
+	
+	
+	    "ConstructionSize"          "2"
+	    "BlockPathingSize"          "2"
+	
+	
+	
+	
+	
+	
+	}
 	"npc_dummy_unit"
 	  {
 	    // General
