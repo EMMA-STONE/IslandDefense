@@ -1,0 +1,74 @@
+"default_tower"
+  {
+        // Visual
+        //-----------------------------
+        "Model"                     "models/heroes/shadow_fiend/shadow_fiend.vmdl"
+        "ModelScale"                "1"
+        "ModelRotation"             "90"
+
+
+        "AbilityLayout"     "1"
+        "Ability1"          "sell"
+        "Ability2"          "0"
+        "Ability3"          "0"
+        "Ability4"          "0"
+
+
+        // Stats
+        //----------------------------- 
+        "Level"                     "1"
+        "BuildTime"                 "2"
+
+        "AttackDamageMin"           "270"
+        "AttackDamageMax"           "270"
+        "Damage"                    "270"  
+        "AttackRange"               "1150"
+        "AttackAcquisitionRange"    "1150"
+        "AttackRate"                "1.5"
+        "AttackAnimationPoint"      "0.25"
+        "ProjectileSpeed"           "2500"
+
+
+
+
+        // General
+        //-----------------------------
+        "BaseClass"                 "npc_dota_creature"
+        "ArmorPhysical"             "0"
+        "StatusHealth"              "175"
+        "StatusHealthRegen"         "0"
+        "StatusMana"                "0"
+        "StatusManaRegen"           "0"
+        "MagicalResistance"         "0"
+
+
+        "ProjectileModel"           "particles/base_attacks/ranged_tower_good.vpcf"     // Particle system model for projectile.
+        "ProjectileSpeed"           "1250"      // Speed of projectile.
+
+        "BoundsHullName"            "DOTA_HULL_SIZE_BUILDING"
+        "TeamName"                  "DOTA_TEAM_GOODGUYS"
+        "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+        "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+        "VisionDaytimeRange"        "900"
+        "VisionNighttimeRange"      "900" 
+        "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK" 
+        "CombatClassAttack"         "DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+        "ProjectileCollisionSize"   "50"
+        "RingRadius"                "80"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+        "MovementSpeed"             "0"
+
+
+        "ConstructionSize"          "2"
+        "BlockPathingSize"          "2"
+
+        "Grid"
+        {
+            "Buildable"
+            {
+                "Square"        "4"
+                "RemoveOnDeath" "true"
+            }
+        }
+
+  } 
