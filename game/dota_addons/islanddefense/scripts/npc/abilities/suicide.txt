@@ -1,0 +1,21 @@
+"suicide"
+{    
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED"
+    "AbilityTextureName"            "techies_suicide"
+
+    
+    "MaxLevel"                      "1"
+    "LevelsBetweenUpgrades"         "0"
+
+    "AbilityChannelTime"            "2"
+    
+    "OnChannelSucceeded" {
+        "Damage" {
+            "Target"                "CASTER"
+            "Type"                  "DAMAGE_TYPE_PURE"
+            "Damage"                "1000"
+        }
+    }
+    
+}

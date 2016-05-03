@@ -1,0 +1,6 @@
+$ cat .gititnore
+
+*
+
+!dota_addons/
+!.gitignore

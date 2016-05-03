@@ -1,0 +1,6 @@
+$ cat .gititnore
+
+*
+
+!.gitignore
+!islanddefense/

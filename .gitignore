@@ -1,0 +1,16 @@
+$cat .gitignore
+
+*
+
+!.gitignore
+!content/
+!content/dota_addons/
+!content/dota_addons/islanddefense/
+!content/dota_addons/islanddefense/*
+!content/dota_addons/islanddefense/**/*
+
+!game/
+!game/dota_addons/
+!game/dota_addons/islanddefense/
+!game/dota_addons/islanddefense/*
+!game/dota_addons/islanddefense/**/*
