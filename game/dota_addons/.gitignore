@@ -1,6 +1,0 @@
-$ cat .gititnore
-
-*
-
-!.gitignore
-!islanddefense/
