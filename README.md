@@ -1,2 +1,3 @@
 # IslandDefense
-Currently being worked on by EMMA STONE and Cunning Linguist.  We pretty much have no idea what we're doing
+
+A project by 2 boys to create our favorite game from WC3 and SC2 in the DotA 2 client.
