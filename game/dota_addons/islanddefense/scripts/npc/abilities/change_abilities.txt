@@ -1,0 +1,21 @@
+"change_abilities"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_CHANNELED | DOTA_ABILITY_NOT_LEARNABLE"
+
+    "AbilityCastRange"				"0"
+    "AbilityCastPoint"				"0.0"
+    "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+    "AbilityChannelTime"			"0.5"
+
+
+    //This is where the valve site says to use scripts instead of the data driven system.
+	"OnChannelSucceeded"
+    {
+        "RunScript"
+        {
+            "ScriptFile"        "builder.lua"
+            "Function"          "Build"
+        }
+    }	
+}

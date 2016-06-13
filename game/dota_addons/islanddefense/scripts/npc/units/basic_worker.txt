@@ -17,11 +17,11 @@
     "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK" 
     "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"    
 
-    "AbilityLayout"				"2"
+    //"AbilityLayout"				"2"
     "Ability1"					"suicide"
     "Ability2"					"gather_wood"
-    "Ability3"					"0"
-    "Ability4"					"0"
+    //"Ability3"					"0"
+    //"Ability4"					"0"
 
 
     //Balance Changes go here

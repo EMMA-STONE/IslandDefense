@@ -11,11 +11,11 @@
 	
 	
 	
-	        "AbilityLayout"     "1"
-	        "Ability1"          "spawn_worker"
-	        "Ability2"          "sell"
-	        "Ability3"          "0"
-	        "Ability4"          "0"
+	       // "AbilityLayout"     "1"
+	        "Ability1"          "sell"
+	        "Ability2"          "spawn_worker"
+	        //"Ability3"          "0"
+	        //"Ability4"          "0"
 	
 	
 	
@@ -80,11 +80,11 @@
 	    "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK" 
 	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"    
 	
-	    "AbilityLayout"				"2"
+	    //"AbilityLayout"				"2"
 	    "Ability1"					"suicide"
 	    "Ability2"					"gather_wood"
-	    "Ability3"					"0"
-	    "Ability4"					"0"
+	    //"Ability3"					"0"
+	    //"Ability4"					"0"
 	
 	
 	    //Balance Changes go here

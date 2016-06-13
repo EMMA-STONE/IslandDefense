@@ -235,6 +235,25 @@
 			}
 		}
 	}
+	"print_lumber"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+	    "AbilityManaCost" 				"0"
+
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+
+
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"resources.lua"
+	            "Function"          	"PrintLumber"
+	        }
+	    }
+	}
 	"spawn_worker"
 	{
 	    "BaseClass" "ability_datadriven"

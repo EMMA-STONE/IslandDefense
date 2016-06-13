@@ -48,6 +48,9 @@ require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core realid files.
 require('events')
 
+--just adding this in to see if it works
+require('playerdata')
+
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
 if GetMapName() == "playground" then
@@ -120,7 +123,13 @@ function realId:OnHeroInGame(hero)
   if abil3 then
     abil3:SetLevel(1)
   end
-
+  abil4 = hero:GetAbilityByIndex(3)
+  if abil4 then
+    abil4:SetLevel(1)
+  end
+  --Should create the player data with playerdata.lua
+ local PlayerID = hero:GetPlayerOwnerID();
+ local newPlayerData = CreateDataForPlayer(PlayerID, true);
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)
 

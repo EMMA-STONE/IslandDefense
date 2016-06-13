@@ -2,22 +2,22 @@
 {
 	"builder"
 	  {
-	    "AbilityLayout"     "1"
+	    //"AbilityLayout"     "1"
 	    "override_hero"     "npc_dota_hero_phantom_assassin"
 	    "SoundSet"          "0" 
 	
 	    "Ability1"			"build_tower"
 	    "Ability2"			"build_wall" 
 	    "Ability3"			"build_base"
-	    "Ability4"			"0"
+	    "Ability4"			"print_lumber"
 	
 	
 	    "ArmorPhysical"       "0"                 // Physical protection.
 	    "MagicalResistance"       "0"                 // Magical protection (percentage).
 	
 	    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	    "AttackDamageMin"     "1"                   // Damage range min.
-	    "AttackDamageMax"     "1"                   // Damage range max.
+	    "AttackDamageMin"     "125"                   // Damage range min.
+	    "AttackDamageMax"     "125"                   // Damage range max.
 	
 	
 	    
@@ -42,7 +42,7 @@
 	    "MovementTurnRate"      "1.0"                 // Turning rate.
 	
 	    "StatusHealth"        "1000"                 // Base health.
-	    "StatusHealthRegen"     "0.0"                 // Health regeneration rate.
+	    "StatusHealthRegen"     "10.0"                 // Health regeneration rate.
 	    "StatusMana"        "400"                   // Base mana.
 	    "StatusManaRegen"     "100.0"                 // Mana regeneration rate.
 	

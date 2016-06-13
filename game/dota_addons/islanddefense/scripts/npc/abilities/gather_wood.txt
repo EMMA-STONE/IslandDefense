@@ -14,7 +14,7 @@
 
     "AbilityCastRange" 				"10"
     "AbilityCastPoint" 				"0"
-    "AbilityChannelTime" 			"0.5"
+    "AbilityChannelTime" 			"80"
 
     OnSpellStart {
         "RunScript"
