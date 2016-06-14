@@ -74,6 +74,7 @@
 	
 	    "UnitName"                      "basic_base"
 	    "AbilityGoldCost"               "175"
+	    "AbilityLumberCost"				"20"
 	
 		"OnSpellStart"
 	    {
@@ -100,6 +101,7 @@
 	    "UnitName"                      "default_tower"
 	    "OverrideBuildingGhost"         "npc_dota_hero_nevermore"
 	    "AbilityGoldCost"               "175"
+	    "AbilityLumberCost"				"200"
 	
 		"OnSpellStart"
 	    {
@@ -128,6 +130,7 @@
 	    "UnitName"                      "default_wall"
 	    "OverrideBuildingGhost"         "npc_dota_hero_axe"
 	    "AbilityGoldCost"               "175"
+	    "AbilityLumberCost"				"200"
 	
 		"OnSpellStart"
 	    {
@@ -180,9 +183,9 @@
 	
 	    "AbilityManaCost" 				"0"
 	
-	    "AbilityCastRange" 				"10"
+	    "AbilityCastRange" 				"200"
 	    "AbilityCastPoint" 				"0"
-	    "AbilityChannelTime" 			"0.5"
+	    "AbilityChannelTime" 			"80"
 	
 	    OnSpellStart {
 	        "RunScript"

@@ -13,6 +13,7 @@
 
     "UnitName"                      "basic_base"
     "AbilityGoldCost"               "175"
+    "AbilityLumberCost"             "20"
 
 	"OnSpellStart"
     {

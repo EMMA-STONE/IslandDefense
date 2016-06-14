@@ -4,13 +4,14 @@ function Build( event )
     local ability = event.ability
     local ability_name = ability:GetAbilityName()
     local building_name = ability:GetAbilityKeyValues()['UnitName']
-    local gold_cost = ability:GetGoldCost(1) 
+    local gold_cost = ability:GetGoldCost(1)
+    local lumber_cost = ability:GetAbilityKeyValues()['AbilityLumberCost']
     local hero = caster:IsRealHero() and caster or caster:GetOwner()
     local playerID = hero:GetPlayerID()
 
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
-    hero:ModifyGold(gold_cost, false, 0)
+    --hero:ModifyGold(gold_cost)
 
     -- Makes a building dummy and starts panorama ghosting
     BuildingHelper:AddBuilding(event)
@@ -38,7 +39,8 @@ function Build( event )
     -- Position for a building was confirmed and valid
     event:OnBuildingPosChosen(function(vPos)
         -- Spend resources
-        hero:ModifyGold(-gold_cost, true, 0)
+        DebugPrint("placed a building, deducting cost")
+
 
         -- Play a sound
         EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", PlayerResource:GetPlayer(playerID))
@@ -56,10 +58,11 @@ function Build( event )
     event:OnConstructionCancelled(function(work)
         local name = work.name
         BuildingHelper:print("Cancelled construction of " .. name)
-
+            DebugPrint("refunded gold")
+            --hero:ModifyGold(gold_cost)
         -- Refund resources for this cancelled work
         if work.refund then
-            hero:ModifyGold(gold_cost, false, 0)
+
         end
     end)
 
@@ -67,7 +70,7 @@ function Build( event )
     event:OnConstructionStarted(function(unit)
         BuildingHelper:print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
         -- Play construction sound
-
+        hero:ModifyGold(-gold_cost)
         -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
         if ability.GetCurrentCharges and not ability:IsPermanent() then
             local charges = ability:GetCurrentCharges()
@@ -115,6 +118,7 @@ function Build( event )
     event:OnAboveHalfHealth(function(unit)
         BuildingHelper:print("" ..unit:GetUnitName().. " is above half health.")        
     end)
+    hero:ModifyGold(0);
 end
 
 -- Called when the Cancel ability-item is used

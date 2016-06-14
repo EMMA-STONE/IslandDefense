@@ -1,6 +1,5 @@
 require('playerdata')
 
-
 function PrintLumber(event)
 	local hero = event.caster;
    	local playerID = hero:GetPlayerOwnerID();
@@ -40,15 +39,15 @@ function CDOTA_BaseNPC_Hero:ModifyGold(goldAmount)
         return
     end]]
 
-    local goldGain = math.floor(goldAmount)
+   --[[ local goldGain = math.floor(goldAmount)
     local remainder = goldAmount - goldGain -- floating point component
     playerData.gold_remainder = playerData.gold_remainder + remainder -- accumulated
     if (playerData.gold_remainder >= 1) then
         playerData.gold_remainder = playerData.gold_remainder - 1
         goldGain = goldGain + 1
-    end
+    end]]
 
-    local newGold = tonumber(playerData.gold) + tonumber(goldGain)
+    local newGold = tonumber(playerData.gold) + tonumber(goldAmount)
     SetCustomGold(playerID, newGold)
 end
 
@@ -61,6 +60,17 @@ end
 
 function CDOTA_PlayerResource:GetGold(playerID)
     return GetPlayerData(playerID).gold
+end
+
+function CDOTA_BaseNPC_Hero:GetLumber()
+    local hero = self
+    local playerID = hero:GetPlayerOwnerID()
+    local playerData = GetPlayerData(playerID)
+    return playerData.lumber
+end
+
+function CDOTA_PlayerResource:GetLumber(playerID)
+    return GetPlayerData(playerID).lumber
 end
 
 function CDOTA_PlayerResource:GetTotalGold()
@@ -93,7 +103,7 @@ function ModifyLumber(playerID, amount)
 
     SetCustomLumber(playerID, playerData.lumber + amount)
 
-    if amount > 0 then
+   --[[ if amount > 0 then
         local hero = PlayerResource:GetSelectedHeroEntity(playerID)
         local summoner = playerData.summoner
 
@@ -108,7 +118,7 @@ function ModifyLumber(playerID, amount)
         if GameSettings.elementsOrderName == "AllPick" then
             SendLumberMessage(playerID, "#etd_lumber_add", amount)
         end
-    end
+    end]]
 end
 
 function SetCustomLumber(playerID, amount)

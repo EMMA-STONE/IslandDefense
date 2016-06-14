@@ -12,7 +12,7 @@
 
     "AbilityManaCost" 				"0"
 
-    "AbilityCastRange" 				"10"
+    "AbilityCastRange" 				"200"
     "AbilityCastPoint" 				"0"
     "AbilityChannelTime" 			"80"
 
