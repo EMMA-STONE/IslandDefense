@@ -169,32 +169,78 @@
 	        }
 	    }
 	}
-	"gather_wood"
-	{
-		"BaseClass" 					"ability_datadriven"
-	
-	
-		"AbilityTextureName"			"furion_sprout"
-	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-	
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
-	
-	
-	    "AbilityManaCost" 				"0"
-	
-	    "AbilityCastRange" 				"200"
-	    "AbilityCastPoint" 				"0"
-	    "AbilityChannelTime" 			"80"
-	
-	    OnSpellStart {
-	        "RunScript"
+"gather_wood"
+{
+	"BaseClass" 					"ability_datadriven"
+
+
+	"AbilityTextureName"			"furion_sprout"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET" | "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
+
+
+    "AbilityManaCost" 				"0"
+
+    "AbilityCastRange" 				"200"
+    "AbilityCastPoint" 				"0"
+  	"AbilityChannelTime"			"500"
+    "OnSpellStart" {
+	        "ApplyModifier"
 	        {
-	            "ScriptFile"        	"gather.lua"
-	            "Function"          	"Gather"
+	        	"ModifierName"	"modifier_cut_trees"
+	        	"Target" 		"CASTER"
+	        	
 	        }
-	    }
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"modifier_cant_cut"
+	        	"Target" 		"TARGET"
+	        }
+
+    }
+    "OnChannelFinish"
+    {
+    	"RemoveModifier"
+    	{
+    		"ModifierName"	"modifier_cut_trees"
+    		"Target" 		"CASTER"
+    	}
+    	"RemoveModifier"
+    	{
+    		"ModifierName"	"modifier_cant_cut"
+    		"Target" 		"TARGET"
+    	}
+    }
+    "Modifiers"
+    {
+    	"modifier_cut_trees"
+    	{
+    		"IsBuff"			"1"
+    		"IsPurgable"		"0"
+    		"ThinkInterval"  	"1.0"
+    		"OnIntervalThink"{
+    			"RunScript"
+		    		{
+		    			"ScriptFile"	"gather.lua"
+		    			"Function"		"Gather"
+		    		}
+    		}
+    
+    		//"EffectName"		"particle_name"
+    		//"EffectAttachType"	"follow_origin"
+
+    	}
+    	"modifier_cant_cut"{
+    		"IsPurgable"		"0"
+    		"IsBuff"			"1"
+    		"IsDebuff"			"0"
+    		"IsStunDebuff"		"0"
+    		//Purge(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions)"
+    	}
 	}
+}
 	"give_gold"
 	{
 		"BaseClass"             		"ability_datadriven"

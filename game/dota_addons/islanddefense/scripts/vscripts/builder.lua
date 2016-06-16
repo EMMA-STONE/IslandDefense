@@ -5,10 +5,10 @@ function Build( event )
     local ability_name = ability:GetAbilityName()
     local building_name = ability:GetAbilityKeyValues()['UnitName']
     local gold_cost = ability:GetGoldCost(1)
-    local lumber_cost = ability:GetAbilityKeyValues()['AbilityLumberCost']
+    local lumber_cost = tonumber(ability:GetAbilityKeyValues()['AbilityLumberCost'])
     local hero = caster:IsRealHero() and caster or caster:GetOwner()
     local playerID = hero:GetPlayerID()
-
+    BuildingHelper:print("lumber cost: " .. lumber_cost)
     -- If the ability has an AbilityGoldCost, it's impossible to not have enough gold the first time it's cast
     -- Always refund the gold here, as the building hasn't been placed yet
     --hero:ModifyGold(gold_cost)
@@ -39,8 +39,6 @@ function Build( event )
     -- Position for a building was confirmed and valid
     event:OnBuildingPosChosen(function(vPos)
         -- Spend resources
-        DebugPrint("placed a building, deducting cost")
-
 
         -- Play a sound
         EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", PlayerResource:GetPlayer(playerID))
@@ -71,6 +69,7 @@ function Build( event )
         BuildingHelper:print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
         -- Play construction sound
         hero:ModifyGold(-gold_cost)
+        hero:ModifyLumber(playerID, -lumber_cost)
         -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
         if ability.GetCurrentCharges and not ability:IsPermanent() then
             local charges = ability:GetCurrentCharges()
