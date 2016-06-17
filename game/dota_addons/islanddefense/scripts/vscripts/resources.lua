@@ -5,7 +5,8 @@ function PrintLumber(event)
    	local playerID = hero:GetPlayerOwnerID();
   	local playerData = GetPlayerData(playerID)
 	local current_lumber = playerData.lumber
-	DebugPrint(current_lumber);
+	DebugPrint("current lumber: " .. current_lumber);
+	--SendErrorMessage(playerID, "#you have " .. current_lumber.."# lumber.")
 
 
 

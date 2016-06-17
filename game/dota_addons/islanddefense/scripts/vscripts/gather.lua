@@ -8,7 +8,7 @@ function Gather( event )
 
     local caster = event.caster
     local PlayerID = caster:GetMainControllingPlayer()
-DebugPrint(PlayerID)
+--DebugPrint(PlayerID)
 
 	ModifyLumber(PlayerID, 5);
 end

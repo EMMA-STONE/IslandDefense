@@ -3,6 +3,7 @@
 require('internal/util')
 require('realid')
 require("libraries/buildinghelper")
+--require('hero_select_data')
 
 function Precache( context )
 --[[
@@ -32,9 +33,12 @@ function Precache( context )
   --PrecacheModel("models/props_gameplay/treasure_chest001.vmdl", context)
   --PrecacheModel("models/props_debris/merchant_debris_chest001.vmdl", context)
   --PrecacheModel("models/props_debris/merchant_debris_chest002.vmdl", context)
+--Precaching io and pa
+
 
   -- Sounds can precached here like anything else
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts", context)
+
 
   -- Entire items can be precached by name
   -- Abilities can also be precached in this way despite the name
@@ -45,6 +49,8 @@ function Precache( context )
   -- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way
   PrecacheUnitByNameSync("npc_dota_hero_ancient_apparition", context)
   PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
+  PrecacheUnitByNameSync("npc_dota_hero_wisp", context)
+  PrecacheUnitByNameSync("npc_dota_hero_phantom_assassin", context)
 end
 
 -- Create the game mode when we activate

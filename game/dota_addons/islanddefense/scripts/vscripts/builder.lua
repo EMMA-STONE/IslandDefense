@@ -1,4 +1,5 @@
 -- A build ability is used (not yet confirmed)
+require('resources')
 function Build( event )
     local caster = event.caster
     local ability = event.ability
@@ -21,25 +22,32 @@ function Build( event )
 
         -- Check for minimum height if defined
         if not BuildingHelper:MeetsHeightCondition(vPos) then
-            BuildingHelper:print("Failed placement of " .. name .." - Placement is below the min height required")
+            BuildingHelper:print("Failed placement of " .. building_name .." - Placement is below the min height required")
             SendErrorMessage(playerID, "#error_invalid_build_position")
             return false
         end
 
         -- If not enough resources to queue, stop
         if PlayerResource:GetGold(playerID) < gold_cost then
-            BuildingHelper:print("Failed placement of " .. name .." - Not enough gold!")
+            BuildingHelper:print("Failed placement of " .. building_name .." - Not enough gold!")
             SendErrorMessage(playerID, "#error_not_enough_gold")
             return false
         end
 
+        if hero:GetLumber() < lumber_cost then
+            BuildingHelper:print("Failed placement of " .. building_name .. " - Not enough lumber!")
+            SendErrorMessage(playerID, "#error_not_enough_lumber")
+            return false
+        end
         return true
     end)
 
     -- Position for a building was confirmed and valid
     event:OnBuildingPosChosen(function(vPos)
         -- Spend resources
-
+        hero:ModifyGold(-gold_cost)
+        ModifyLumber(playerID, -lumber_cost)
+        DebugPrint("removing the gold and lumber costs: "..gold_cost .. "gold, and ".. lumber_cost .. " lumber.")
         -- Play a sound
         EmitSoundOnClient("DOTA_Item.ObserverWard.Activate", PlayerResource:GetPlayer(playerID))
     end)
@@ -56,7 +64,7 @@ function Build( event )
     event:OnConstructionCancelled(function(work)
         local name = work.name
         BuildingHelper:print("Cancelled construction of " .. name)
-            DebugPrint("refunded gold")
+            --DebugPrint("refunded gold")
             --hero:ModifyGold(gold_cost)
         -- Refund resources for this cancelled work
         if work.refund then
@@ -68,8 +76,7 @@ function Build( event )
     event:OnConstructionStarted(function(unit)
         BuildingHelper:print("Started construction of " .. unit:GetUnitName() .. " " .. unit:GetEntityIndex())
         -- Play construction sound
-        hero:ModifyGold(-gold_cost)
-        hero:ModifyLumber(playerID, -lumber_cost)
+
         -- If it's an item-ability and has charges, remove a charge or remove the item if no charges left
         if ability.GetCurrentCharges and not ability:IsPermanent() then
             local charges = ability:GetCurrentCharges()

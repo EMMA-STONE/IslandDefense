@@ -51,7 +51,6 @@ require('events')
 --just adding this in to see if it works
 require('playerdata')
 
-
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
 if GetMapName() == "playground" then
   require("examples/playground")
@@ -155,6 +154,7 @@ function realId:OnGameInProgress()
   DebugPrint("[REALID] The game has officially begun")
 
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
+  --CreateHeroSelect()
 
 
   -- Create Gold Crystal in center of map
@@ -188,11 +188,11 @@ function realId:InitrealId()
   GameRules:GetGameModeEntity():SetAnnouncerDisabled(true)
   GameRules:GetGameModeEntity():SetHUDVisible(DOTA_HUD_VISIBILITY_TOP_SCOREBOARD, false)
 
-  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 4 )
-  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
+  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 13 )
+  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
   
   local base_game_mode = GameRules:GetGameModeEntity()
-  base_game_mode:SetCustomGameForceHero("npc_dota_hero_phantom_assassin")
+  base_game_mode:SetCustomGameForceHero("npc_dota_hero_wisp")
   base_game_mode:SetFogOfWarDisabled(true)
 
   DebugPrint('[REALID] Done loading realId realid!\n\n')
