@@ -15,5 +15,11 @@
             "ScriptFile"        	"hero_select.lua"
             "Function"          	"select_either"
         }
+        "Damage"
+        {
+            "Target"        "CASTER"
+            "Type"            "DAMAGE_TYPE_PURE"
+            "Damage"        "9001"
+        }
     }
 }

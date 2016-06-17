@@ -50,6 +50,7 @@ require('events')
 
 --just adding this in to see if it works
 require('playerdata')
+require('hero_select_data')
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
 if GetMapName() == "playground" then
@@ -154,7 +155,7 @@ function realId:OnGameInProgress()
   DebugPrint("[REALID] The game has officially begun")
 
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
-  --CreateHeroSelect()
+  CreateHeroSelect()
 
 
   -- Create Gold Crystal in center of map
