@@ -5,7 +5,7 @@ if not PlayerData then
 	PlayerData = {}
 end
 
-function CreateDataForPlayer(playerID, allowOverride)
+function CreateDataForPlayer(playerID, allowOverride, hero)
 
     -- Don't create data twice unless allowed to override
     if not allowOverride then
@@ -16,13 +16,14 @@ function CreateDataForPlayer(playerID, allowOverride)
 
 	PlayerData[playerID] = {}
 	local data = PlayerData[playerID]
+	data["hero"] = hero
 	data["lumber"] = 100
 	data["gold"] = 0
-    data["gold_remainder"] = 0
-	data["towers"] = {}
-	data["victory"] = 0  -- 0 if lost, 1 if won    
+    --data["gold_remainder"] = 0
+	--data["towers"] = {}
+	--data["victory"] = 0  -- 0 if lost, 1 if won    
     print("Created Data for player ", playerID)
-	
+    
 	return data
 end
 

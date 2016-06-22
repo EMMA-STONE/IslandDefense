@@ -32,3 +32,17 @@ function addBuilder(playerID)
 	data["Builders"][data["numberofBuilders"]] = playerID
 	DebugPrint("Added builder.  Total # of builders: " .. data["numberofBuilders"])
 end
+
+function chooseTitan()
+	--math.randomseed(os.time())
+	local TitanPlayerID
+	if data["numberofTitans"] >= 1 then
+		TitanPlayerID = data["Titans"][math.random(data["numberofTitans"])]
+	elseif data["numberofNeutrals"] >= 1 then
+		TitanPlayerID = data["Neutrals"][math.random(data["numberofNeutrals"])]
+	else
+		TitanPlayerID = data["Builders"][math.random(data["numberofBuilders"])]
+	end
+	
+	return TitanPlayerID
+end

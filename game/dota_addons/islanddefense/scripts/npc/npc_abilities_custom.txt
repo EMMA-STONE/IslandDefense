@@ -74,7 +74,7 @@
 	
 	    "UnitName"                      "basic_base"
 	    "AbilityGoldCost"               "175"
-	    "AbilityLumberCost"				"20"
+	    "AbilityLumberCost"             "20"
 	
 		"OnSpellStart"
 	    {
@@ -101,7 +101,7 @@
 	    "UnitName"                      "default_tower"
 	    "OverrideBuildingGhost"         "npc_dota_hero_nevermore"
 	    "AbilityGoldCost"               "175"
-	    "AbilityLumberCost"				"200"
+	    "AbilityLumberCost"             "200"
 	
 		"OnSpellStart"
 	    {
@@ -130,7 +130,7 @@
 	    "UnitName"                      "default_wall"
 	    "OverrideBuildingGhost"         "npc_dota_hero_axe"
 	    "AbilityGoldCost"               "175"
-	    "AbilityLumberCost"				"200"
+	    "AbilityLumberCost"             "200"
 	
 		"OnSpellStart"
 	    {
@@ -142,6 +142,27 @@
 	    }
 	
 	
+	}
+	"change_abilities"
+	{
+	    "BaseClass"                     "ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_CHANNELED | DOTA_ABILITY_NOT_LEARNABLE"
+	
+	    "AbilityCastRange"				"0"
+	    "AbilityCastPoint"				"0.0"
+	    "AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	    "AbilityChannelTime"			"0.5"
+	
+	
+	    //This is where the valve site says to use scripts instead of the data driven system.
+		"OnChannelSucceeded"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"        "builder.lua"
+	            "Function"          "Build"
+	        }
+	    }	
 	}
 	"dummy_tree"
 	{
@@ -169,78 +190,78 @@
 	        }
 	    }
 	}
-"gather_wood"
-{
-	"BaseClass" 					"ability_datadriven"
-
-
-	"AbilityTextureName"			"furion_sprout"
-
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET" | "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
-
-	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
-
-
-    "AbilityManaCost" 				"0"
-
-    "AbilityCastRange" 				"200"
-    "AbilityCastPoint" 				"0"
-  	"AbilityChannelTime"			"500"
-    "OnSpellStart" {
-	        "ApplyModifier"
-	        {
-	        	"ModifierName"	"modifier_cut_trees"
-	        	"Target" 		"CASTER"
-	        	
-	        }
-	        "ApplyModifier"
-	        {
-	        	"ModifierName"	"modifier_cant_cut"
-	        	"Target" 		"TARGET"
-	        }
-
-    }
-    "OnChannelFinish"
-    {
-    	"RemoveModifier"
-    	{
-    		"ModifierName"	"modifier_cut_trees"
-    		"Target" 		"CASTER"
-    	}
-    	"RemoveModifier"
-    	{
-    		"ModifierName"	"modifier_cant_cut"
-    		"Target" 		"TARGET"
-    	}
-    }
-    "Modifiers"
-    {
-    	"modifier_cut_trees"
-    	{
-    		"IsBuff"			"1"
-    		"IsPurgable"		"0"
-    		"ThinkInterval"  	"1.0"
-    		"OnIntervalThink"{
-    			"RunScript"
-		    		{
-		    			"ScriptFile"	"gather.lua"
-		    			"Function"		"Gather"
-		    		}
-    		}
-    
-    		//"EffectName"		"particle_name"
-    		//"EffectAttachType"	"follow_origin"
-
-    	}
-    	"modifier_cant_cut"{
-    		"IsPurgable"		"0"
-    		"IsBuff"			"1"
-    		"IsDebuff"			"0"
-    		"IsStunDebuff"		"0"
-    		//Purge(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions)"
-    	}
+	"gather_wood"
+	{
+		"BaseClass" 					"ability_datadriven"
+	
+	
+		"AbilityTextureName"			"furion_sprout"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
+	
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"200"
+	    "AbilityCastPoint" 				"0"
+	  	"AbilityChannelTime"			"500"
+	    "OnSpellStart" {
+		        "ApplyModifier"
+		        {
+		        	"ModifierName"	"modifier_cut_trees"
+		        	"Target" 		"CASTER"
+		        	
+		        }
+		        "ApplyModifier"
+		        {
+		        	"ModifierName"	"modifier_cant_cut"
+		        	"Target" 		"TARGET"
+		        }
+	
+	    }
+	    "OnChannelFinish"
+	    {
+	    	"RemoveModifier"
+	    	{
+	    		"ModifierName"	"modifier_cut_trees"
+	    		"Target" 		"CASTER"
+	    	}
+	    	"RemoveModifier"
+	    	{
+	    		"ModifierName"	"modifier_cant_cut"
+	    		"Target" 		"TARGET"
+	    	}
+	    }
+	    "Modifiers"
+	    {
+	    	"modifier_cut_trees"
+	    	{
+	    		"IsBuff"			"1"
+	    		"IsPurgable"		"0"
+	    		"ThinkInterval"  	"1.0"
+	    		"OnIntervalThink"{
+	    			"RunScript"
+			    		{
+			    			"ScriptFile"	"gather.lua"
+			    			"Function"		"Gather"
+			    		}
+	    		}
+	    
+	    		//"EffectName"		"particle_name"
+	    		//"EffectAttachType"	"follow_origin"
+	
+	    	}
+	    	"modifier_cant_cut"{
+	    		"IsPurgable"		"0"
+	    		"IsBuff"			"1"
+	    		"IsDebuff"			"0"
+	    		"IsStunDebuff"		"0"
+	    		//Purge(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions)"
+	    	}
+		}
 	}
-}
 	"give_gold"
 	{
 		"BaseClass"             		"ability_datadriven"
@@ -257,17 +278,115 @@
 		    	"OnAttacked"
 		    	// "%attack_damage" is set to the damage value after mitigation
 		    	{
-		    		"RunScript"
-		    		{
-		    			"Target"		"ATTACKER"
-		    			"ScriptFile"	"resources.lua"
-		    			"Function"		"GiveGold"
-		    		}
+					"RunScript"
+					{
+						"Attacker"		"ATTACKER"
+						"ScriptFile"	"resources.lua"
+						"Function"		"GiveGold"
+					}
 		    	}
 	
 				
 			}
+	
 		}
+	}
+	
+	
+	
+	"print_lumber"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+	
+	
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"resources.lua"
+	            "Function"          	"PrintLumber"
+	        }
+	    }
+	}
+	"select_builder"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+	
+	
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"hero_select.lua"
+	            "Function"          	"select_builder"
+	        }
+	        "Damage"
+	        {
+	            "Target"        "CASTER"
+	            "Type"            "DAMAGE_TYPE_PURE"
+	            "Damage"        "9001"
+	        }
+	    }
+	}
+	"select_either"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+	
+	
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"hero_select.lua"
+	            "Function"          	"select_either"
+	        }
+	        "Damage"
+	        {
+	            "Target"        "CASTER"
+	            "Type"            "DAMAGE_TYPE_PURE"
+	            "Damage"        "9001"
+	        }
+	    }
+	}
+	"select_titan"
+	{
+		"BaseClass" 					"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	
+	    "AbilityManaCost" 				"0"
+	
+	    "AbilityCastRange" 				"10"
+	    "AbilityCastPoint" 				"0"
+	
+	
+	    OnSpellStart {
+	        "RunScript"
+	        {
+	            "ScriptFile"        	"hero_select.lua"
+	            "Function"          	"select_titan"
+	        }
+	        "Damage"
+	        {
+	            "Target"        "CASTER"
+	            "Type"            "DAMAGE_TYPE_PURE"
+	            "Damage"        "9001"
+	        }
+	    }
 	}
 	"sell"
 	{
@@ -283,100 +402,6 @@
 				"Function"		"CancelBuilding"
 			}
 		}
-	}
-"select_titan"
-{
-	"BaseClass" 					"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-
-    "AbilityManaCost" 				"0"
-
-    "AbilityCastRange" 				"10"
-    "AbilityCastPoint" 				"0"
-
-
-    OnSpellStart {
-        "RunScript"
-        {
-            "ScriptFile"        	"hero_select.lua"
-            "Function"          	"select_titan"
-        }
-        "Damage"
-        {
-            "Target"        "CASTER"
-            "Type"            "DAMAGE_TYPE_PURE"
-            "Damage"        "9001"
-        }
-    }
-}
-	"select_either"
-{
-	"BaseClass" 					"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-
-    "AbilityManaCost" 				"0"
-
-    "AbilityCastRange" 				"10"
-    "AbilityCastPoint" 				"0"
-
-
-    OnSpellStart {
-        "RunScript"
-        {
-            "ScriptFile"        	"hero_select.lua"
-            "Function"          	"select_either"
-        }
-        "Damage"
-        {
-            "Target"        "CASTER"
-            "Type"            "DAMAGE_TYPE_PURE"
-            "Damage"        "9001"
-        }
-    }
-}
-	"select_builder"
-{
-	"BaseClass" 					"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-
-    "AbilityManaCost" 				"0"
-
-    "AbilityCastRange" 				"10"
-    "AbilityCastPoint" 				"0"
-
-
-    OnSpellStart {
-        "RunScript"
-        {
-            "ScriptFile"        	"hero_select.lua"
-            "Function"          	"select_builder"
-        }
-        "Damage"
-        {
-            "Target"        "CASTER"
-            "Type"            "DAMAGE_TYPE_PURE"
-            "Damage"        "9001"
-        }
-    }
-}
-	"print_lumber"
-	{
-		"BaseClass" 					"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-
-	    "AbilityManaCost" 				"0"
-
-	    "AbilityCastRange" 				"10"
-	    "AbilityCastPoint" 				"0"
-
-
-	    OnSpellStart {
-	        "RunScript"
-	        {
-	            "ScriptFile"        	"resources.lua"
-	            "Function"          	"PrintLumber"
-	        }
-	    }
 	}
 	"spawn_worker"
 	{

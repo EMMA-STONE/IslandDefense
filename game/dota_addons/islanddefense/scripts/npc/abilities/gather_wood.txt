@@ -5,7 +5,7 @@
 
 	"AbilityTextureName"			"furion_sprout"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET" | "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_TREE"
 

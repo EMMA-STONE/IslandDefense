@@ -11,11 +11,11 @@
 	
 	
 	
-	       // "AbilityLayout"     "1"
-	        "Ability1"          "sell"
-	        "Ability2"          "spawn_worker"
-	        //"Ability3"          "0"
-	        //"Ability4"          "0"
+	        "AbilityLayout"     "1"
+	        "Ability1"          "spawn_worker"
+	        "Ability2"          "sell"
+	        "Ability3"          "0"
+	        "Ability4"          "0"
 	
 	
 	

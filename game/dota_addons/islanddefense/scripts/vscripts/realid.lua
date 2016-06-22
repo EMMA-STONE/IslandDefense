@@ -97,6 +97,9 @@ end
 ]]
 function realId:OnAllPlayersLoaded()
   DebugPrint("[REALID] All Players have loaded into the game")
+  CreateHeroSelect()
+
+
 end
 
 --[[
@@ -127,9 +130,10 @@ function realId:OnHeroInGame(hero)
   if abil4 then
     abil4:SetLevel(1)
   end
+  hero:SetAbilityPoints(0)
   --Should create the player data with playerdata.lua
  local PlayerID = hero:GetPlayerOwnerID();
- local newPlayerData = CreateDataForPlayer(PlayerID, true);
+ local newPlayerData = CreateDataForPlayer(PlayerID, true, hero);
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)
 
@@ -155,15 +159,24 @@ function realId:OnGameInProgress()
   DebugPrint("[REALID] The game has officially begun")
 
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
-  CreateHeroSelect()
-
-
   -- Create Gold Crystal in center of map
   CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
+  
+  -- ****************** Changing one of the players into the titan *****************
+  local TitanID = chooseTitan()
+ -- local heroid = PlayerResource:GetSelectedHeroID(TitanID)
+  local data = GetPlayerData(TitanID)
+  data["hero"]:RespawnUnit()
+  PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_phantom_assassin", 0, 0)
+  
+
+
+
+
 
   Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
     function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
+      --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
       return 30.0 -- Rerun this timer every 30 game-time seconds 
     end)
 end
@@ -182,7 +195,7 @@ function realId:InitrealId()
   GameRules:SetHeroRespawnEnabled(false)
   GameRules:SetSameHeroSelectionEnabled(true)
   GameRules:SetPostGameTime(100)
-  GameRules:SetPreGameTime(0)
+  GameRules:SetPreGameTime(30)
   GameRules:SetHeroSelectionTime(0)
   GameRules:SetGoldPerTick(0)
   GameRules:GetGameModeEntity():SetGoldSoundDisabled(true)
@@ -190,7 +203,7 @@ function realId:InitrealId()
   GameRules:GetGameModeEntity():SetHUDVisible(DOTA_HUD_VISIBILITY_TOP_SCOREBOARD, false)
 
   GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 13 )
-  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 1 )
+  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
   
   local base_game_mode = GameRules:GetGameModeEntity()
   base_game_mode:SetCustomGameForceHero("npc_dota_hero_wisp")
