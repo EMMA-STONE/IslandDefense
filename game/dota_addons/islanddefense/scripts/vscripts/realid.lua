@@ -160,24 +160,27 @@ function realId:OnGameInProgress()
 
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
   -- Create Gold Crystal in center of map
-  CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
+ 
   
   -- ****************** Changing one of the players into the titan *****************
   local TitanID = chooseTitan()
- -- local heroid = PlayerResource:GetSelectedHeroID(TitanID)
   local data = GetPlayerData(TitanID)
-  data["hero"]:RespawnUnit()
-  PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_phantom_assassin", 0, 0)
+  GameRules:SetCustomGameTeamMaxPlayers(3, 1)
+  PlayerResource:SetCustomTeamAssignment(TitanID, 3)
+
+  -- Titan's team has been changed, now let builders select stuff and spawn
+  -- (UI would be fantastic here instead of using another wisp)
   
 
 
 
-
-
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+  -- Now respawn titan and gold crystal
+  Timers:CreateTimer(30,
     function()
-      --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
+      data["hero"]:RespawnUnit()
+      PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_luna", 0, 0)
+      CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
+      return nil
     end)
 end
 
@@ -195,14 +198,14 @@ function realId:InitrealId()
   GameRules:SetHeroRespawnEnabled(false)
   GameRules:SetSameHeroSelectionEnabled(true)
   GameRules:SetPostGameTime(100)
-  GameRules:SetPreGameTime(30)
+  GameRules:SetPreGameTime(10)
   GameRules:SetHeroSelectionTime(0)
   GameRules:SetGoldPerTick(0)
   GameRules:GetGameModeEntity():SetGoldSoundDisabled(true)
   GameRules:GetGameModeEntity():SetAnnouncerDisabled(true)
   GameRules:GetGameModeEntity():SetHUDVisible(DOTA_HUD_VISIBILITY_TOP_SCOREBOARD, false)
 
-  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 13 )
+  GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 14 )
   GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
   
   local base_game_mode = GameRules:GetGameModeEntity()
