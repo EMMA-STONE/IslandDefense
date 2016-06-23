@@ -1,0 +1,150 @@
+.BaseHud
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+#LumberDisplay
+{
+    margin-top: 95px;
+    margin-left: 170px;
+    color: #009900;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px 4.0 #000;
+
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#LumberDisplay.newResource
+{
+    animation-name: NewResource;
+}
+
+#ResourceLumber
+{
+    width: 65px;
+    height: 40px;
+
+    vertical-align: bottom;
+
+    margin-bottom: 157px;
+    margin-right: 40px;
+}
+
+.AspectRatio4x3 #ResourceLumber, .AspectRatio5x4 #ResourceLumber
+{
+    margin-bottom: 140px;
+    margin-right: 204px;
+}
+
+.AspectRatio21x9 #ResourceLumber
+{
+    margin-bottom: 214px;
+    margin-right: 70px;
+}
+
+#LumberText
+{
+    color: green;
+    font-size: 20px;
+    font-family: Radiance;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+
+    margin-left: 40px;
+    margin-top: 3px;
+}
+
+#LumberIcon 
+{   
+    width:36px; 
+    height:26px; 
+    background-image: url("file://{images}/custom_game/resources/lumber_icon.png"); 
+    background-size: 100% 100%;
+}
+
+//--- Gold panel
+
+#ResourceGold
+{
+    width: 100px;
+    height: 40px;
+
+    vertical-align: bottom;
+
+    margin-bottom: 157px;
+    margin-right: 107px;
+    margin-left: 107px;
+}
+
+#GoldText
+{
+    width: 105px;
+    color: #fea500;
+    font-size: 20px;
+    font-family: Radiance;
+    font-weight: bold;
+    text-align: right;
+    text-shadow: 0px 0px 3px 3.0 #000000;
+
+    margin-top: 3px;
+    margin-left: 28px;
+    margin-right: 8px;
+}
+
+#GoldIcon
+{   
+    width: 36px; 
+    height: 36px; 
+    background-image: url("file://{images}/custom_game/resources/gold_icon.png"); 
+    background-size: 100% 100%;
+    margin-top: -5px;
+}
+
+.AspectRatio4x3 #ResourceGold, .AspectRatio5x4 #ResourceGold
+{
+    margin-bottom: 170px;
+    margin-right: 170px;
+}
+
+.AspectRatio21x9 #ResourceGold
+{
+    margin-bottom: 214px;
+    margin-right: 160px;
+}
+
+//---------
+
+
+@keyframes 'NewResource'
+{
+    0%
+    {
+        transform: translateX( -4px ) rotateZ( -5deg );
+    }
+
+    50%
+    {
+        transform: translateX( 4px ) rotateZ( 5deg );
+    }
+    
+    100%
+    {
+        transform: translateX( -4px ) rotateZ( -5deg );
+    }
+}
+
+
+.Flipped
+{
+    horizontal-align: left;
+}
+
+.AlignRight
+{
+    horizontal-align: right;
+}
