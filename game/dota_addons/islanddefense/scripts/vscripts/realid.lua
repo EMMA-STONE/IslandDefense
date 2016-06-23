@@ -51,6 +51,7 @@ require('events')
 --just adding this in to see if it works
 require('playerdata')
 require('hero_select_data')
+require('resources')
 
 -- This is a detailed example of many of the containers.lua possibilities, but only activates if you use the provided "playground" map
 if GetMapName() == "playground" then
@@ -205,7 +206,8 @@ function realId:OnGameInProgress()
    end
   i=i+1
   end
-
+  --SetCustomLumber(TitanID, 99)
+  --SetCustomGold(TitanID, 500)
   -- Now respawn titan and gold crystal
   Timers:CreateTimer(30,
     function()
