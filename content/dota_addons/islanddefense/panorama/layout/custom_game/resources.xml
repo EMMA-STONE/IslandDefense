@@ -1,0 +1,19 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="file://{resources}/styles/resources.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/resources.js" /> 
+  </scripts>
+  <Panel hittest="false" class="BaseHud">
+    <Panel hittest="true" id='ResourceGold' onmouseover="ShowTooltip('#gold')" onmouseout="DOTAHideTitleTextTooltip()">
+      <Image hittest="false" id="GoldIcon" />
+      <Label hittest="false" id="GoldText" text="0" class="TitleFont" />
+    </Panel>
+    <Panel hittest="true" id='ResourceLumber' onmouseover="ShowTooltip('#lumber')" onmouseout="DOTAHideTitleTextTooltip()">
+      <Label hittest="false" id="LumberText" text="0" class="TitleFont" />
+      <Image hittest="false" id="LumberIcon"/>
+    </Panel>
+  </Panel>
+</root>
