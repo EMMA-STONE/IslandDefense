@@ -4,7 +4,7 @@
     <include src="file://{resources}/styles/resources.css" />
   </styles>
   <scripts>
-    <include src="file://{resources}/scripts/custom_game/resources.js" /> 
+    <include src="file://{resources}/scripts/resources.js" /> 
   </scripts>
   <Panel hittest="false" class="BaseHud">
     <Panel hittest="true" id='ResourceGold' onmouseover="ShowTooltip('#gold')" onmouseout="DOTAHideTitleTextTooltip()">
