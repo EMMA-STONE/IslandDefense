@@ -29,7 +29,7 @@ function ModifyLumber( data )
 		lumber.text = data.lumber;
 
 		// Keep track of the summoner
-		Root.summoner = data.summoner
+		//Root.summoner = data.summoner
 		
 		/*
 		if (diff > 0) {

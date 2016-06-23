@@ -206,16 +206,17 @@ function realId:OnGameInProgress()
    end
   i=i+1
   end
-  --SetCustomLumber(TitanID, 99)
-  --SetCustomGold(TitanID, 500)
+
   -- Now respawn titan and gold crystal
-  Timers:CreateTimer(30,
+  Timers:CreateTimer(5,
     function()
       data["hero"]:RespawnUnit()
       --local Titan = PlayerResource:GetPlayer(TitanID)
       --CreateHeroForPlayer("npc_dota_hero_luna", Titan)
-      PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_luna", 0, 0)
+      PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_phantom_assassin", 0, 0)
       CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
+        SetCustomLumber(TitanID, 99)
+        SetCustomGold(TitanID, 500)
       return nil
     end)
 end

@@ -4,11 +4,14 @@ function Gather( event )
 
     -- set tree to taken
     -- Give wood every tick
-    --literally none of this shit works ffs
 
     local caster = event.caster
+    local target = event.target
     local PlayerID = caster:GetMainControllingPlayer()
---DebugPrint(PlayerID)
 
-	ModifyLumber(PlayerID, 5);
+    if target:HasModifier("modifier_cant_cut") then
+		caster:InterruptChannel()
+	else
+		ModifyLumber(PlayerID, 5);
+	end
 end
