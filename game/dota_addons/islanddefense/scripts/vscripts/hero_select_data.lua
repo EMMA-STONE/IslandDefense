@@ -46,3 +46,7 @@ function chooseTitan()
 	
 	return TitanPlayerID
 end
+
+function GetHeroSelectData()
+	return data
+end

@@ -167,17 +167,51 @@ function realId:OnGameInProgress()
   local data = GetPlayerData(TitanID)
   GameRules:SetCustomGameTeamMaxPlayers(3, 1)
   PlayerResource:SetCustomTeamAssignment(TitanID, 3)
-
+  
   -- Titan's team has been changed, now let builders select stuff and spawn
   -- (UI would be fantastic here instead of using another wisp)
-  
-
-
+  --currently it just spawns everyone as PA
+  local heroSelectData = GetHeroSelectData()
+  local i = 0
+  while i < heroSelectData["numberofTitans"] do
+    local playerID = heroSelectData["Titans"][i+1]
+    if not (TitanID == playerID) then
+      --local Player = PlayerResource:GetPlayer(playerID)
+      local heroData = GetPlayerData(playerID)
+      heroData["hero"]:RespawnUnit()
+       PlayerResource:ReplaceHeroWith(playerID, "npc_dota_hero_phantom_assassin",0,0)
+    end
+    i = i+1
+  end
+  local i = 0
+  while i < heroSelectData["numberofNeutrals"] do
+   local playerID = heroSelectData["Neutrals"][i+1]
+    if not (TitanID == playerID) then
+     --local Player = PlayerResource:GetPlayer(playerID)
+    local heroData = GetPlayerData(playerID)
+     heroData["hero"]:RespawnUnit()
+     PlayerResource:ReplaceHeroWith(playerID, "npc_dota_hero_phantom_assassin",0,0)
+   end
+   i=1+i
+  end
+  local i = 0
+  while i < heroSelectData["numberofBuilders"] do
+ local playerID = heroSelectData["Builders"][i+1]
+  if not (TitanID == playerID) then
+   --local Player = PlayerResource:GetPlayer(playerID)
+   local heroData = GetPlayerData(playerID)
+   heroData["hero"]:RespawnUnit()
+    PlayerResource:ReplaceHeroWith(playerID, "npc_dota_hero_phantom_assassin", 0,0)
+   end
+  i=i+1
+  end
 
   -- Now respawn titan and gold crystal
   Timers:CreateTimer(30,
     function()
       data["hero"]:RespawnUnit()
+      --local Titan = PlayerResource:GetPlayer(TitanID)
+      --CreateHeroForPlayer("npc_dota_hero_luna", Titan)
       PlayerResource:ReplaceHeroWith(TitanID, "npc_dota_hero_luna", 0, 0)
       CreateUnitByName("gold_crystal", Vector(800,-350,0), true, nil, nil, DOTA_TEAM_BADGUYS)
       return nil
