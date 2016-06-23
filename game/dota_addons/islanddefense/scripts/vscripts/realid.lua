@@ -159,8 +159,6 @@ end
 function realId:OnGameInProgress()
   DebugPrint("[REALID] The game has officially begun")
   
-  -- Hide the quickbuy menu
-  mode:SetHUDVisible(8, false) 
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
   -- Create Gold Crystal in center of map
  
