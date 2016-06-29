@@ -19,13 +19,9 @@ function GiveGold( event )
 
 	--local player = PlayerResource:GetPlayer( caster:GetPlayerID() )
 	--local hero = PlayerResource:GetSelectedHeroEntity(playerID)
-
-			--hero:ModifyGold(interest)
 	attackingUnit:ModifyGold(300);
 
 end
-
-
 
 
 -- EVERYTHING BELOW IS FROM ELEMENT TD and IDK if it will actually work

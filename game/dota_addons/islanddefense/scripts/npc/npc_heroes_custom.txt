@@ -71,7 +71,7 @@
 	
 	    
 	
-	    //"AttributePrimary"      "DOTA_ATTRIBUTE_AGILITY"
+	    "AttributePrimary"      "DOTA_ATTRIBUTE_AGILITY"
 	    "AttributeBaseStrength"   "10"                   // Base strength
 	    "AttributeStrengthGain"   "0"                   // Strength bonus per level.
 	    "AttributeBaseIntelligence" "10"                   // Base intelligence

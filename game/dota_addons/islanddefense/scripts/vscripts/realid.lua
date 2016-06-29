@@ -133,8 +133,10 @@ function realId:OnHeroInGame(hero)
   end
   hero:SetAbilityPoints(0)
   --Should create the player data with playerdata.lua
- local PlayerID = hero:GetPlayerOwnerID();
- local newPlayerData = CreateDataForPlayer(PlayerID, true, hero);
+ local playerID = hero:GetPlayerOwnerID();
+ local newPlayerData = CreateDataForPlayer(playerID, true, hero);
+         SetCustomLumber(playerID, 99)
+        SetCustomGold(playerID, 500)
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)
 
@@ -161,10 +163,12 @@ function realId:OnGameInProgress()
   
   -- CreateUnitByName("default_tower", RandomVector(0), true, nil, nil, DOTA_TEAM_BADGUYS)
   -- Create Gold Crystal in center of map
- 
+          SetCustomLumber(0, 99)
+        SetCustomGold(0, 500)
+  -- This line for example will set t
   
   -- ****************** Changing one of the players into the titan *****************
-  local TitanID = chooseTitan()
+  --[[local TitanID = chooseTitan()
   local data = GetPlayerData(TitanID)
   GameRules:SetCustomGameTeamMaxPlayers(3, 1)
   PlayerResource:SetCustomTeamAssignment(TitanID, 3)
@@ -206,6 +210,7 @@ function realId:OnGameInProgress()
    end
   i=i+1
   end
+  ]]
 
   -- Now respawn titan and gold crystal
   Timers:CreateTimer(5,
@@ -246,7 +251,7 @@ function realId:InitrealId()
   GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 0 )
   
   local base_game_mode = GameRules:GetGameModeEntity()
-  base_game_mode:SetCustomGameForceHero("npc_dota_hero_wisp")
+  base_game_mode:SetCustomGameForceHero("npc_dota_hero_phantom_assassin")
   base_game_mode:SetFogOfWarDisabled(true)
 
   DebugPrint('[REALID] Done loading realId realid!\n\n')

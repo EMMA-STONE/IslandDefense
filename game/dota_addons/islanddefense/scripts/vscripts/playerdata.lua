@@ -18,7 +18,8 @@ function CreateDataForPlayer(playerID, allowOverride, hero)
 	local data = PlayerData[playerID]
 	data["hero"] = hero
 	data["lumber"] = 100
-	data["gold"] = 0
+	data["gold"] = 500
+	data["tree_locations"] = {}
     --data["gold_remainder"] = 0
 	--data["towers"] = {}
 	--data["victory"] = 0  -- 0 if lost, 1 if won    
