@@ -1,0 +1,25 @@
+"select_titan"
+{
+	"BaseClass" 					"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+    "AbilityManaCost" 				"0"
+
+    "AbilityCastRange" 				"10"
+    "AbilityCastPoint" 				"0"
+
+
+    OnSpellStart {
+        "RunScript"
+        {
+            "ScriptFile"        	"hero_select.lua"
+            "Function"          	"select_titan"
+        }
+        "Damage"
+        {
+            "Target"        "CASTER"
+            "Type"            "DAMAGE_TYPE_PURE"
+            "Damage"        "9001"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+"build_wall"
+{
+    "BaseClass"                     "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+    "MaxLevel"                      "3"
+    "LevelsBetweenUpgrades"         "0"
+    
+    "Building"                      "1"
+    "AbilityCastRange"              "200"
+    "Scale"                         "1"
+    "PlayerCanControl"              "1"
+
+    "UnitName"                      "default_wall"
+    "OverrideBuildingGhost"         "npc_dota_hero_axe"
+    "AbilityGoldCost"               "175"
+    "AbilityLumberCost"             "200"
+
+	"OnSpellStart"
+    {
+        "RunScript"
+        {
+            "ScriptFile"        "builder.lua"
+            "Function"          "Build"
+        }
+    }
+
+
+}
